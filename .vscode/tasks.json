@@ -2,18 +2,42 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build cpp",
+            "label": "build C++ Program && Run C++ Program",
             "type": "shell",
-            "command": "D:\\ProgramData\\Dev-Cpp\\MinGW32\\bin\\g++.exe",
+            "command": "cmd",
             "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "/c",
+                "set \"PATH=D:\\ProgramData\\Dev-Cpp\\MinGW32\\bin;%PATH%\" && g++ -g \"${file}\" -o \"${fileDirname}\\${fileBasenameNoExtension}.exe\" && start \"\" cmd /c chcp 65001 ^>nul ^& \"${fileDirname}\\${fileBasenameNoExtension}.exe\" ^& pause"
             ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build C++ Program",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "set \"PATH=D:\\ProgramData\\Dev-Cpp\\MinGW32\\bin;%PATH%\" && g++ -g \"${file}\" -o \"${fileDirname}\\${fileBasenameNoExtension}.exe\""
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "silent"
             },
             "problemMatcher": ["$gcc"]
         }
